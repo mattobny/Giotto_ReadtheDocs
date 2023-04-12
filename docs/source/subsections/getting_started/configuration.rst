@@ -2,7 +2,7 @@
 Configuration
 =============
 
-:Date: 2022-10-12
+:Date: 2023-02-15
 
 1 Configuring the Giotto Environment
 ====================================
@@ -106,18 +106,33 @@ will identify the OS in use and install/not install packages
       ### installGiottoEnvironment(packages_to_install = new_pkg_versions,
       ###                          python_version = '3.8') # Default is 3.10.2
 
-3 Using a non-default Conda Environment with Giotto
-===================================================
+3 Advanced: Using a non-default Conda Environment with Giotto
+=============================================================
 
-Inherently as a result of the interface with reticulate, it is not
-possible to install the Giotto environment at a specified location. For
-this reason, the specific packages and versions used in the default
-Giotto installation have been provided so that custom Conda environments
-may also be used. **Note that the installation of all aforementioned
-packages is necessary for the full functionality of Giotto**.
+If using `reticulate's <https://rstudio.github.io/reticulate/>`__ default
+miniconda path to create an environment is undesirable, the Giotto environment may be 
+created within an existing anaconda/miniconda environment by specifying the
+`mini_install_path` argument:
 
-To use a specific Conda environment, a path to a system-specific python
-executable within a conda/miniconda environment must be provided to
+.. container:: cell
+
+   .. code:: r
+      
+      installGiottoEnvironment(mini_install_path = "C:/my/conda/lives/here")
+
+If not provided, it is chosen by `reticulate::install_miniconda() <https://rstudio.github.io/reticulate/reference/conda-tools.html#finding-conda-1>`__. Please note the required input format:
+   - **Correct format:** mini_install_path = "C:/my/conda/lives/here" OR "C:\\my\\conda\\lives\\here"
+   - **INCORRECT formats:** mini_install_path = "C:/my/conda/lives/here/" AND "C:\\my\\conda\\lives\\here\\"
+
+Unexpected behavior could arise if `force_miniconda` is set to `TRUE` when `mini_install_path`
+is specified and encompasses a non-reticulate environment, as this prompts a reticulate miniconda installation.
+
+**Note that the installation of all aforementioned packages is necessary 
+for the full functionality of Giotto**. A .yml file is provided in the repository
+for convenience of alternative installation methods. If the desired environment is not
+named "giotto_env", Giotto will be unable to automatically detect the conda environment, so 
+it must be specified within a workflow. To use a specific, non-default named Conda environment, 
+the path to a system-specific python executable within that environment must be provided to
 `createGiottoInstructions <../md_rst/createGiottoInstructions.html>`__.
 This will direct reticulate to activate and utilize that environment
 within that R session. See `How to Create a Giotto

@@ -193,12 +193,12 @@ possible to add:
    `addFeatMetadata <../md_rst/addFeatMetadata.html>`__
 
 -  **Spatial networks** or **grids**: see
-   `Visualizations <./visualizations.html>`__
+   `Visualizations <../tools/visualizations.html>`__
 
 -  **Dimension reduction**: see
-   `Clustering <./dimension_reduction.html>`__
+   `Clustering <../analyses/dimension_reduction.html>`__
 
--  **Images**: see `Imaging <./getting_started_images.html>`__
+-  **Images**: see `Imaging <../tools/getting_started_images.html>`__
 
 -  **giottoInstructions**: see
    `createGiottoInstructions <../md_rst/createGiottoInstructions.html>`__
